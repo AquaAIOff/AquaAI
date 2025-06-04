@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaAI - Smart Pool Management for Las Vegas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2); }
+            to { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.4); }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero {
+            margin: 2rem 0;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #091a7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .demo-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            color: white;
+        }
+
+        .ai-interface {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .chat-message {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            margin: 3rem 0;
+            color: white;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00d4ff, #091a7a);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .features { grid-template-columns: 1fr; }
+            .hero, .demo-section, .cta-section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🏊‍♀️ AquaAI</div>
+            <div class="tagline">AI-Powered Pool Management for Las Vegas</div>
+        </header>
+
+        <section class="hero glass">
+            <h1>Revolutionary Pool Care in the Desert</h1>
+            <p>Harness the power of artificial intelligence to maintain perfect pool conditions in Las Vegas's challenging climate. Save water, reduce chemicals, and maximize efficiency.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card glass">
+                <span class="feature-icon">🤖</span>
+                <h3>Smart Water Analysis</h3>
+                <p>AI-powered chemical monitoring with real-time adjustments for Las Vegas's high mineral content and intense UV exposure.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <span class="feature-icon">💧</span>
+                <h3>Water Conservation</h3>
+                <p>Intelligent evaporation prediction and automated cover deployment to combat Vegas's extreme heat and low humidity.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <span class="feature-icon">📱</span>
+                <h3>Mobile Command Center</h3>
+                <p>Control your pool systems remotely while you're on the Strip or at work. Get alerts before problems develop.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <span class="feature-icon">⚡</span>
+                <h3>Energy Optimization</h3>
+                <p>Smart scheduling during off-peak hours to reduce costs during Vegas's expensive summer electricity rates.</p>
+            </div>
+        </section>
+
+        <section class="demo-section glass">
+            <h2>Live AI Demo - Pool Assistant</h2>
+            <div class="ai-interface">
+                <div class="chat-message">
+                    <strong>Pool Owner:</strong> "It's 115°F today. What should I do about my pool?"
+                </div>
+                <div class="chat-message">
+                    <strong>AquaAI:</strong> "I've detected extreme heat conditions. I'm automatically:
+                    <br>• Extending circulation time by 3 hours
+                    <br>• Increasing chlorine by 15% for UV protection  
+                    <br>• Deploying solar cover to reduce evaporation
+                    <br>• Scheduling backwash for 6 AM when temps drop
+                    <br>• Sending reminder to check skimmer baskets (high debris expected)"
+                </div>
+                <div class="chat-message">
+                    <strong>Pool Owner:</strong> "What about water loss?"
+                </div>
+                <div class="chat-message">
+                    <strong>AquaAI:</strong> "Today's evaporation prediction: 0.3 inches. With solar cover active, reduced to 0.1 inches. That saves you 87 gallons and $12 in water costs today alone."
+                </div>
+            </div>
+
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value">87%</div>
+                    <div>Water Saved vs Manual</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value pulse">$340</div>
+                    <div>Monthly Savings</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">24/7</div>
+                    <div>Monitoring Active</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2.3 min</div>
+                    <div>Average Response Time</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section glass">
+            <h2>Ready to Transform Your Pool Business?</h2>
+            <p>Join 200+ Las Vegas pool companies already using AquaAI to delight customers and boost profits.</p>
+            <a href="#" class="cta-button" onclick="showDemo()">Start Free Trial</a>
+            <a href="#" class="cta-button" onclick="showDemo()">Schedule Demo</a>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 AquaAI Solutions | Designed for Las Vegas Pool Professionals</p>
+            <p>🌟 This is a demo website showcasing AI capabilities for pool management</p>
+        </footer>
+    </div>
+
+    <script>
+        function showDemo() {
+            alert('Thanks for your interest! This is a demo website.\n\nNext steps:\n• Build real AI integration\n• Connect to pool sensors\n• Develop mobile app\n• Create customer dashboard');
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate metric values on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'pulse 2s infinite';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.metric-value').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add hover effects to feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
